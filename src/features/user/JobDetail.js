@@ -19,49 +19,51 @@ const JobDetail = () => {
   }, [_id]);
 
   return (
-    <div className='flex flex-col'>
-      <div className='flex justify-center mb-8'>
+    <div className="flex flex-col">
+      <div className="flex justify-center my-8">
         {job && (
-          <div className='flex justify-between items-center gap-96 bg-white rounded-lg pr-8'>
-            <div className='flex items-center gap-10'>
+          <div className="flex justify-between items-center gap-96 bg-white rounded-lg pr-8 mx-auto">
+            <div className="flex items-center gap-10">
               <div
-                className='w-36 h-36 flex justify-center items-center'
+                className="w-36 h-36 flex justify-center items-center"
                 style={{ backgroundColor: `${job.logoBackground}` }}
               >
-                <img src={job.logo} alt='logo' width={80} height={80} />
+                <img src={job.logo} alt="logo" width={80} height={80} />
               </div>
               <div>
-                <h3 className='text-2xl font-bold'>{job.company}</h3>
+                <h3 className="text-2xl font-bold">{job.company}</h3>
                 <p>{job.website}</p>
               </div>
             </div>
-            <Button type='button'>Company Site</Button>
+            <Button type="button">Company Site</Button>
           </div>
         )}
       </div>
 
-      <div className='bg-white w-[1000px] mx-auto p-12'>
+      <div className="bg-white w-[1000px] mx-auto p-12">
         {job && (
           <div>
-            <div className='flex justify-between items-center'>
+            <div className="flex justify-between items-center">
               <div>
-                <span className='text-xl text-slate-400'>
+                <span className="text-xl text-slate-400">
                   {moment(new Date(job.createdAt)).fromNow()} - {job.contract}
                 </span>
-                <h1 className='text-3xl font-bold my-3'>{job.position}</h1>
-                <p className='text-indigo-500 font-bold'>{job.location}</p>
+                <h1 className="text-3xl font-bold my-10">{job.position}</h1>
+                <p className="text-indigo-500 font-bold  text-xl">
+                  {job.location}
+                </p>
               </div>
-              <Button type='button'>Apply Now</Button>
+              <Button type="button">Apply Now</Button>
             </div>
 
-            <p className='my-8 text-slate-400'>{job.description}</p>
+            <p className="my-8 text-slate-400">{job.description}</p>
 
             <div>
-              <h2 className='text-2xl font-bold'>Requirements</h2>
-              <p className='my-6'>{job.requirements.content}</p>
-              <ul className='list-disc'>
+              <h2 className="text-2xl font-bold">Requirements</h2>
+              <p className="my-6">{job.requirements.content}</p>
+              <ul className="list-disc">
                 {job.requirements.items.map((item, index) => (
-                  <li className='text-slate-500 my-3' key={index}>
+                  <li className="text-slate-500 my-3" key={index}>
                     {item}
                   </li>
                 ))}
@@ -69,11 +71,11 @@ const JobDetail = () => {
             </div>
 
             <div>
-              <h2 className='text-2xl font-bold mt-8'>What will you do</h2>
-              <p className='my-6'>{job.role.content}</p>
-              <ol className='list-decimal'>
+              <h2 className="text-2xl font-bold mt-8">What will you do</h2>
+              <p className="my-6">{job.role.content}</p>
+              <ol className="list-decimal">
                 {job.role.items.map((item, index) => (
-                  <li className='text-slate-500 my-3' key={index}>
+                  <li className="text-slate-500 my-3" key={index}>
                     {item}
                   </li>
                 ))}

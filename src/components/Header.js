@@ -49,7 +49,7 @@ const Header = () => {
             <span onClick={handleLogOut}>Log out</span>
           </>
         ) : (
-          <Link to='/auth/login'>Login</Link>
+          <Link to="/auth/login">Login</Link>
         )}
       </div>
     </div>

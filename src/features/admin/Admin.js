@@ -31,13 +31,13 @@ const Admin = () => {
   };
 
   return (
-    <div className='p-20'>
-      <Button type='button' onClick={() => navigate('/jobs/create')}>
+    <div className="p-20">
+      <Button type="button" onClick={() => navigate('/jobs/create')}>
         Create new job
       </Button>
 
-      <div className='overflow-x-auto mt-5'>
-        <table className='table w-full'>
+      <div className="overflow-x-auto mt-5">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>#</th>
@@ -56,16 +56,16 @@ const Admin = () => {
                   {edit ? (
                     <>
                       <td>
-                        <Input type='text' value={job.company} />
+                        <Input type="text" value={job.company} />
                       </td>
                       <td>
-                        <Input type='text' value={job.location} />
+                        <Input type="text" value={job.location} />
                       </td>
                       <td>
-                        <Input type='text' value={job.contract} />
+                        <Input type="text" value={job.contract} />
                       </td>
                       <td>
-                        <Input type='text' value={job.position} />
+                        <Input type="text" value={job.position} />
                       </td>
                     </>
                   ) : (
@@ -81,7 +81,7 @@ const Admin = () => {
                   </td>
                   <td>
                     <span
-                      className='cursor-pointer'
+                      className="cursor-pointer"
                       onClick={() => {
                         handleDelete(job._id);
                       }}

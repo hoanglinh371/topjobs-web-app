@@ -27,17 +27,17 @@ const Jobs = () => {
   };
 
   return (
-    <div className='px-48'>
+    <div className="px-48">
       <form onSubmit={handleSubmit}>
         <Input
-          type='text'
-          label='Search'
-          placeholder='Search by position'
+          type="text"
+          label="Search"
+          placeholder="Search by position"
           onChange={(e) => setSearch(e.target.value)}
         />
       </form>
 
-      <div className='grid grid-cols-3 gap-8 mt-20'>
+      <div className="grid grid-cols-3 gap-x-10 gap-y-16 mt-16">
         {jobs && jobs.map((job) => <JobCard key={job._id} job={job} />)}
       </div>
     </div>

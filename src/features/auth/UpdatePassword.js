@@ -37,29 +37,29 @@ const UpdatePassword = () => {
   };
 
   return (
-    <div className='w-96 mx-auto border py-8 px-6'>
-      <p className='text-center'>Update password</p>
+    <div className="w-96 mx-auto border py-8 px-6">
+      <p className="text-center text-2xl font-bold">Update password</p>
       <form onSubmit={handleSubmit}>
         <Input
-          label='Current'
-          type='password'
-          placeholder='Enter current password'
+          label="Current"
+          type="password"
+          placeholder="Enter current password"
           onChange={(e) => setCurrentPassword(e.target.value)}
         />
         <Input
-          label='New'
-          type='password'
-          placeholder='Enter new password'
+          label="New"
+          type="password"
+          placeholder="Enter new password"
           onChange={(e) => setNewPassword(e.target.value)}
         />{' '}
         <Input
-          label='Confirm'
-          type='password'
-          placeholder='Confirm new password'
+          label="Confirm"
+          type="password"
+          placeholder="Confirm new password"
           onChange={(e) => setConfirmNewPassword(e.target.value)}
         />
-        <div className='flex justify-center items-center'>
-          <Button type='submit'>Change my Password</Button>
+        <div className="flex justify-center items-center">
+          <Button type="submit">Change my Password</Button>
         </div>
       </form>
     </div>

@@ -38,24 +38,24 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className='w-96 mx-auto border py-8 px-6'>
-      <p className='text-center'>Reset password</p>
+    <div className="w-96 mx-auto border py-8 px-6">
+      <p className="text-center text-2xl font-bold">Reset password</p>
       <form onSubmit={handleSubmit}>
         <Input
-          label='Password'
-          type='password'
-          placeholder='Enter your new password'
+          label="Password"
+          type="password"
+          placeholder="Enter your new password"
           onChange={(e) => setNewPassword(e.target.value)}
         />
         <Input
-          label='Confirm'
-          type='password'
-          placeholder='Enter your password'
+          label="Confirm"
+          type="password"
+          placeholder="Enter your password"
           onChange={(e) => setConfirmNewPassword(e.target.value)}
         />
 
-        <div className='flex justify-center items-center'>
-          <Button type='submit'>Confirm</Button>
+        <div className="flex justify-center items-center">
+          <Button type="submit">Confirm</Button>
         </div>
       </form>
     </div>

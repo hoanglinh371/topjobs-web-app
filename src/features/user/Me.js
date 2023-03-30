@@ -40,35 +40,35 @@ const Me = () => {
   };
 
   return (
-    <div className='w-[1000px] mx-auto bg-white flex justify-between px-20 py-40'>
+    <div className="w-[1000px] mx-auto bg-white flex justify-between px-20 py-40">
       <div>
         <img
-          src='https://picsum.photos/200'
-          className='rounded-full'
-          alt='user'
+          src="https://picsum.photos/200"
+          className="rounded-full"
+          alt="user"
         />
       </div>
 
-      <div className='w-96'>
+      <div className="w-96">
         {user && (
           <form onSubmit={handleSubmit}>
             <Input
-              type='text'
+              type="text"
               value={name}
-              label='Name'
+              label="Name"
               onChange={(e) => setName(e.target.value)}
             />
             <Input
-              type='email'
+              type="email"
               value={email}
-              label='Email'
+              label="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
 
-            <div className='flex justify-between'>
-              <Button type='submit'>Update Me</Button>
+            <div className="flex justify-between">
+              <Button type="submit">Update Me</Button>
               <Button
-                type='button'
+                type="button"
                 onClick={() => navigate('/auth/update-password')}
               >
                 Change My Password

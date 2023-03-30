@@ -16,18 +16,18 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className='w-96 mx-auto border py-8 px-6'>
-      <p className='text-center'>Forgot Password</p>
+    <div className="w-96 mx-auto border py-8 px-6">
+      <p className="text-center text-2xl font-bold">Forgot Password</p>
       <form onSubmit={handleSubmit}>
         <Input
-          label='Email'
-          type='text'
-          placeholder='Enter your email'
+          label="Email"
+          type="text"
+          placeholder="Enter your email"
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <div className='flex justify-center items-center'>
-          <Button type='submit'>Submit</Button>
+        <div className="flex justify-center items-center">
+          <Button type="submit">Submit</Button>
         </div>
       </form>
     </div>
