@@ -20,8 +20,8 @@ const UpdatePassword = () => {
         newPassword,
         confirmNewPassword,
       });
-      localStorage.setItem('access_token', data.data.token);
       alert('Update password Successfully!');
+      localStorage.setItem('access_token', data.data.token);
       navigate('/');
     } catch (error) {
       alert(error.response.data.message);

@@ -23,6 +23,7 @@ const ResetPassword = () => {
         },
       );
       alert('Change password successfull!');
+      localStorage.setItem('access_token', data.data.token);
       navigate('/');
     } catch (error) {
       alert(error.response.data.message);

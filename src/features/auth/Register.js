@@ -5,8 +5,12 @@ import axiosClient from '../../api/axios.client';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import { UserContext } from '../../contexts/user.context';
+import jwtDecode from 'jwt-decode';
 
 const Register = () => {
+  const { setUser } = React.useContext(UserContext);
+
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -24,6 +28,11 @@ const Register = () => {
       });
 
       alert('Register Successful!');
+      const userData = await axiosClient.get(
+        `/users/${jwtDecode(data.data.token)._id}`,
+      );
+      setUser(userData.data.metadata.user);
+      localStorage.setItem('access_token', data.data.token);
       navigate('/');
     } catch (error) {
       alert(error.response.data.message);
