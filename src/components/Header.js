@@ -1,15 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
+import React from "react";
+import { Link } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
-import axiosClient from '../api/axios.client';
+import axiosClient from "../api/axios.client";
 
 const Header = () => {
   const [user, setUser] = React.useState();
   const [id, setId] = React.useState(() =>
-    localStorage.getItem('access_token')
-      ? jwtDecode(localStorage.getItem('access_token'))._id
-      : null,
+    localStorage.getItem("access_token")
+      ? jwtDecode(localStorage.getItem("access_token"))._id
+      : null
   );
 
   React.useEffect(() => {
@@ -22,26 +22,56 @@ const Header = () => {
   }, [id]);
 
   const handleLogOut = () => {
-    localStorage.removeItem('access_token');
+    localStorage.removeItem("access_token");
     setUser(null);
   };
 
   return (
-    <div className='flex justify-between items-center bg-indigo-500 px-48 py-5'>
+    <div className="flex justify-between items-center bg-indigo-500 px-48 py-5 rounded-b-full">
       <img
-        src='https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/Logo_Real_Madrid.svg/1432px-Logo_Real_Madrid.svg.png'
-        alt='logo'
+        src="https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/Logo_Real_Madrid.svg/1432px-Logo_Real_Madrid.svg.png"
+        alt="logo"
         width={64}
       />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/vi/thumb/a/a1/Man_Utd_FC_.svg/1200px-Man_Utd_FC_.svg.png"
+        alt="logo"
+        width={80}
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/Logo_Real_Madrid.svg/1432px-Logo_Real_Madrid.svg.png"
+        alt="logo"
+        width={64}
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/vi/thumb/a/a1/Man_Utd_FC_.svg/1200px-Man_Utd_FC_.svg.png"
+        alt="logo"
+        width={80}
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/Logo_Real_Madrid.svg/1432px-Logo_Real_Madrid.svg.png"
+        alt="logo"
+        width={64}
+      />
+
       <div>
         {user ? (
           <>
-            <span>{user.name}</span>
-            <span> / </span>
-            <span onClick={handleLogOut}>Log out</span>
+            <span className="font-bold text-lg text-white">{user.name}</span>
+            <span className="text-lg"> | </span>
+            <span
+              onClick={handleLogOut}
+              className="font-bold cursor-pointer text-lg text-white"
+            >
+              Log out
+            </span>
           </>
         ) : (
-          <Link to='/auth/login'>Login</Link>
+          <Link to="/auth/login">
+            <span className="font-bold cursor-pointer text-lg text-white">
+              Login
+            </span>
+          </Link>
         )}
       </div>
     </div>
