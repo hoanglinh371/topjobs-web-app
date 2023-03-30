@@ -1,9 +1,9 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import jwtDecode from "jwt-decode";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
-import axiosClient from "../api/axios.client";
-import { UserContext } from "../contexts/user.context";
+import axiosClient from '../api/axios.client';
+import { UserContext } from '../contexts/user.context';
 
 const Header = () => {
   // const [user, setUser] = React.useState();
@@ -11,8 +11,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const [id, setId] = React.useState(() =>
-    localStorage.getItem("access_token")
-      ? jwtDecode(localStorage.getItem("access_token"))._id
+    localStorage.getItem('access_token')
+      ? jwtDecode(localStorage.getItem('access_token'))._id
       : null
   );
 
@@ -26,7 +26,7 @@ const Header = () => {
   // }, [id, setUser]);
 
   const handleLogOut = () => {
-    localStorage.removeItem("access_token");
+    localStorage.removeItem('access_token');
     setUser(null);
   };
 
@@ -63,7 +63,7 @@ const Header = () => {
           <>
             <span
               className="font-bold text-lg text-white"
-              onClick={() => navigate("/me")}
+              onClick={() => navigate('/me')}
             >
               {user.name}
             </span>
