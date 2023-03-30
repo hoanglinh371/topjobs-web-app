@@ -18,7 +18,7 @@ const Header = () => {
 
   // React.useEffect(() => {
   //   const fetchData = async () => {
-  //     const data = await axiosClient.get(/users/${id});
+  //     const data = await axiosClient.get(`/users/${id}`);
   //     setUser(data.data.metadata.user);
   //   };
 
@@ -31,18 +31,18 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between items-center bg-indigo-500 px-48 py-5">
-      <Link to="/">
+    <div className='flex justify-between items-center bg-indigo-500 px-48 py-5'>
+      <Link to='/'>
         <img
-          src="https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/Logo_Real_Madrid.svg/1432px-Logo_Real_Madrid.svg.png"
-          alt="logo"
+          src='https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/Logo_Real_Madrid.svg/1432px-Logo_Real_Madrid.svg.png'
+          alt='logo'
           width={64}
         />
       </Link>
       <div>
         {user ? (
           <>
-            <span className="cursor-pointer" onClick={() => navigate('/me')}>
+            <span className='cursor-pointer' onClick={() => navigate('/me')}>
               {user.name}
             </span>
             <span> / </span>
