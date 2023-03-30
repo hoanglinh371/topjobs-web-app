@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <Routes>
       <Route index element={<Jobs />} />
-      <Route path='/:_id' element={<JobDetail />} />
+      <Route path="/:_id" element={<JobDetail />} />
     </Routes>
   );
 };

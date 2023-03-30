@@ -1,15 +1,19 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import axiosClient from "../../api/axios.client";
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+import axiosClient from '../../api/axios.client';
+import { UserContext } from '../../contexts/user.context';
+import jwtDecode from 'jwt-decode';
 
 const UpdatePassword = () => {
+  const { user, setUser } = React.useContext(UserContext);
+
   const navigate = useNavigate();
-  const [currentPassword, setCurrentPassword] = React.useState("");
-  const [newPassword, setNewPassword] = React.useState("");
-  const [confirmNewPassword, setConfirmNewPassword] = React.useState("");
+  const [currentPassword, setCurrentPassword] = React.useState('');
+  const [newPassword, setNewPassword] = React.useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = React.useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,9 +24,13 @@ const UpdatePassword = () => {
         newPassword,
         confirmNewPassword,
       });
-      localStorage.setItem("access_token", data.data.token);
-      alert("Update password Successfully!");
-      navigate("/");
+      alert('Update password Successfully!');
+      localStorage.setItem('access_token', data.data.token);
+      const userData = await axiosClient.get(
+        `/users/${jwtDecode(localStorage.getItem('access_token'))._id}`
+      );
+      setUser(userData.data.metadata.user);
+      navigate('/');
     } catch (error) {
       alert(error.response.data.message);
     }
@@ -43,7 +51,7 @@ const UpdatePassword = () => {
           type="password"
           placeholder="Enter new password"
           onChange={(e) => setNewPassword(e.target.value)}
-        />{" "}
+        />{' '}
         <Input
           label="Confirm"
           type="password"

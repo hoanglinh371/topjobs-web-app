@@ -10,11 +10,11 @@ import UpdatePassword from './UpdatePassword';
 const Auth = () => {
   return (
     <Routes>
-      <Route path='/login' element={<Login />} />
-      <Route path='/registration' element={<Register />} />
-      <Route path='/forgot-password' element={<ForgotPassword />} />
-      <Route path='/reset-password/:resetToken' element={<ResetPassword />} />
-      <Route path='/update-password' element={<UpdatePassword />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/registration" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+      <Route path="/update-password" element={<UpdatePassword />} />
     </Routes>
   );
 };

@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import moment from "moment";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 const JobCard = ({ job }) => {
   return (

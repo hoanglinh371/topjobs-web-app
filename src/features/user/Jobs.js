@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import axiosClient from "../../api/axios.client";
-import JobCard from "./JobCard";
-import Input from "../../components/Input";
+import axiosClient from '../../api/axios.client';
+import JobCard from './JobCard';
+import Input from '../../components/Input';
 
 const Jobs = () => {
   const [jobs, setJobs] = React.useState();
-  const [search, setSearch] = React.useState("");
+  const [search, setSearch] = React.useState('');
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const data = await axiosClient.get("/jobs");
+      const data = await axiosClient.get('/jobs');
       setJobs(data.data.metadata.jobs);
     };
     fetchData();
@@ -18,7 +18,7 @@ const Jobs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await axiosClient.get("/jobs", {
+    const data = await axiosClient.get('/jobs', {
       params: {
         position: search,
       },

@@ -1,10 +1,10 @@
-import moment from "moment";
-import React from "react";
-import { useParams } from "react-router-dom";
+import moment from 'moment';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 
-import axiosClient from "../../api/axios.client";
+import axiosClient from '../../api/axios.client';
 
-import Button from "../../components/Button";
+import Button from '../../components/Button';
 
 const JobDetail = () => {
   const { _id } = useParams();

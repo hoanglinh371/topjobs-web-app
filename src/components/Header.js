@@ -1,25 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 
 import axiosClient from "../api/axios.client";
+import { UserContext } from "../contexts/user.context";
 
 const Header = () => {
-  const [user, setUser] = React.useState();
+  // const [user, setUser] = React.useState();
+  const { user, setUser } = React.useContext(UserContext);
+  const navigate = useNavigate();
+
   const [id, setId] = React.useState(() =>
     localStorage.getItem("access_token")
       ? jwtDecode(localStorage.getItem("access_token"))._id
       : null
   );
 
-  React.useEffect(() => {
-    const fetchData = async () => {
-      const data = await axiosClient.get(`/users/${id}`);
-      setUser(data.data.metadata.user);
-    };
+  // React.useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await axiosClient.get(`/users/${id}`);
+  //     setUser(data.data.metadata.user);
+  //   };
 
-    id && fetchData();
-  }, [id]);
+  //   id && fetchData();
+  // }, [id, setUser]);
 
   const handleLogOut = () => {
     localStorage.removeItem("access_token");
@@ -57,7 +61,12 @@ const Header = () => {
       <div>
         {user ? (
           <>
-            <span className="font-bold text-lg text-white">{user.name}</span>
+            <span
+              className="font-bold text-lg text-white"
+              onClick={() => navigate("/me")}
+            >
+              {user.name}
+            </span>
             <span className="text-lg"> | </span>
             <span
               onClick={handleLogOut}

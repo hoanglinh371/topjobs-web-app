@@ -1,26 +1,36 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 
-import axiosClient from "../../api/axios.client";
+import axiosClient from '../../api/axios.client';
+import { UserContext } from '../../contexts/user.context';
+import jwtDecode from 'jwt-decode';
 
 const Login = () => {
+  const { user, setUser } = React.useContext(UserContext);
   const navigate = useNavigate();
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await axiosClient.post("/auth/login", {
+      const data = await axiosClient.post('/auth/login', {
         email,
         password,
       });
-      localStorage.setItem("access_token", data.data.token);
-      alert("Log in Successfully!");
-      navigate("/");
+      localStorage.setItem('access_token', data.data.token);
+
+      const userData = await axiosClient.get(
+        `/users/${jwtDecode(data.data.token)._id}`
+      );
+
+      setUser(userData.data.metadata.user);
+
+      alert('Log in Successfully!');
+      navigate('/');
     } catch (error) {
       alert(error.response.data.message);
     }
