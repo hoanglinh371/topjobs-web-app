@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 
 import axiosClient from '../api/axios.client';
@@ -8,6 +8,7 @@ import { UserContext } from '../contexts/user.context';
 const Header = () => {
   // const [user, setUser] = React.useState();
   const { user, setUser } = React.useContext(UserContext);
+  const navigate = useNavigate();
 
   const [id, setId] = React.useState(() =>
     localStorage.getItem('access_token')
@@ -41,7 +42,9 @@ const Header = () => {
       <div>
         {user ? (
           <>
-            <span>{user.name}</span>
+            <span className='cursor-pointer' onClick={() => navigate('/me')}>
+              {user.name}
+            </span>
             <span> / </span>
             <span onClick={handleLogOut}>Log out</span>
           </>
