@@ -27,7 +27,7 @@ const UpdatePassword = () => {
       alert('Update password Successfully!');
       localStorage.setItem('access_token', data.data.token);
       const userData = await axiosClient.get(
-        `/users/${jwtDecode(localStorage.getItem('access_token'))._id}`
+        `/users/${jwtDecode(localStorage.getItem('access_token'))._id}`,
       );
       setUser(userData.data.metadata.user);
       navigate('/');

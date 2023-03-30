@@ -13,12 +13,12 @@ const Header = () => {
   const [id, setId] = React.useState(() =>
     localStorage.getItem('access_token')
       ? jwtDecode(localStorage.getItem('access_token'))._id
-      : null
+      : null,
   );
 
   // React.useEffect(() => {
   //   const fetchData = async () => {
-  //     const data = await axiosClient.get(`/users/${id}`);
+  //     const data = await axiosClient.get(/users/${id});
   //     setUser(data.data.metadata.user);
   //   };
 
@@ -31,56 +31,25 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between items-center bg-indigo-500 px-48 py-5 rounded-b-full">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/Logo_Real_Madrid.svg/1432px-Logo_Real_Madrid.svg.png"
-        alt="logo"
-        width={64}
-      />
-      <img
-        src="https://upload.wikimedia.org/wikipedia/vi/thumb/a/a1/Man_Utd_FC_.svg/1200px-Man_Utd_FC_.svg.png"
-        alt="logo"
-        width={80}
-      />
-      <img
-        src="https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/Logo_Real_Madrid.svg/1432px-Logo_Real_Madrid.svg.png"
-        alt="logo"
-        width={64}
-      />
-      <img
-        src="https://upload.wikimedia.org/wikipedia/vi/thumb/a/a1/Man_Utd_FC_.svg/1200px-Man_Utd_FC_.svg.png"
-        alt="logo"
-        width={80}
-      />
-      <img
-        src="https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/Logo_Real_Madrid.svg/1432px-Logo_Real_Madrid.svg.png"
-        alt="logo"
-        width={64}
-      />
-
+    <div className="flex justify-between items-center bg-indigo-500 px-48 py-5">
+      <Link to="/">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/Logo_Real_Madrid.svg/1432px-Logo_Real_Madrid.svg.png"
+          alt="logo"
+          width={64}
+        />
+      </Link>
       <div>
         {user ? (
           <>
-            <span
-              className="font-bold text-lg text-white"
-              onClick={() => navigate('/me')}
-            >
+            <span className="cursor-pointer" onClick={() => navigate('/me')}>
               {user.name}
             </span>
-            <span className="text-lg"> | </span>
-            <span
-              onClick={handleLogOut}
-              className="font-bold cursor-pointer text-lg text-white"
-            >
-              Log out
-            </span>
+            <span> / </span>
+            <span onClick={handleLogOut}>Log out</span>
           </>
         ) : (
-          <Link to="/auth/login">
-            <span className="font-bold cursor-pointer text-lg text-white">
-              Login
-            </span>
-          </Link>
+          <Link to="/auth/login">Login</Link>
         )}
       </div>
     </div>

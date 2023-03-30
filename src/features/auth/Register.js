@@ -29,7 +29,7 @@ const Register = () => {
 
       alert('Register Successful!');
       const userData = await axiosClient.get(
-        `/users/${jwtDecode(data.data.token)._id}`
+        `/users/${jwtDecode(data.data.token)._id}`,
       );
       setUser(userData.data.metadata.user);
       localStorage.setItem('access_token', data.data.token);

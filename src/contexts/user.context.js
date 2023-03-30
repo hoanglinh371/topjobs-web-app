@@ -13,7 +13,7 @@ const UserProvider = ({ children }) => {
   React.useEffect(() => {
     const fetchData = async () => {
       const data = await axiosClient.get(
-        `/users/${jwtDecode(localStorage.getItem('access_token'))._id}`
+        `/users/${jwtDecode(localStorage.getItem('access_token'))._id}`,
       );
       setUser(data.data.metadata.user);
     };
