@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import axiosClient from "../../api/axios.client";
+import axiosClient from '../../api/axios.client';
 
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 const ForgotPassword = () => {
-  const [email, setEmail] = React.useState("");
+  const [email, setEmail] = React.useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await axiosClient.post("/auth/forgot-password", {
+    const data = await axiosClient.post('/auth/forgot-password', {
       email,
     });
   };
